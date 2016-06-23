@@ -5,3 +5,6 @@ if str==str.reverse
 else
 	puts "Not palindrome"
 end
+
+
+print "Dheeraj"
