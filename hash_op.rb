@@ -18,9 +18,9 @@ key.each do |ki|
 	ki=convert_i(ki)
 	hash[ki]=value[index]	#Put all the key value pair to hash created
 	index+=1
-	hash.default=nil	#Setting default 
 end
 
+hash.default=nil	#Setting default 
 puts "Hash : #{hash}"
 
 puts "Enter key to get Value:"	#Find
