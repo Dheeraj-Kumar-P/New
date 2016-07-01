@@ -38,16 +38,17 @@ def convert_temp(temp=0, input_scale ="celsius", output_scale ="celsius")
     end
 end
 puts "Enter Temp: "
-a=gets.to_i
+a=gets.to_f
 puts "Enter input: "
 b=gets.chomp
-puts "Output(Y/N): "
+puts "Output(Y(Specify) /N(Celsius) ): "
 c=gets.chomp
 if c=='Y'
 	puts "Enter output:"	
 	c=gets.chomp
+    convert_temp(a,b,c)
 else
-	c="celsius"
+	convert_temp(a,b)
 end
-convert_temp(a,b,c)
+
 
