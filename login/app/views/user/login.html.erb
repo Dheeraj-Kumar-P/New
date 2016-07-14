@@ -1,0 +1,9 @@
+<h1>Login</h1>
+<%= form_tag(:controller=>"user",:action=>"create") do %>
+<p>&#160;&#160;&#160;<%= submit_tag "Sign up" %></p>
+<% end %>
+<%= form_tag(:controller => "user", :action => "submit") do %> 
+	Username :<%= text_field(:accounts, :user_name) %><br /><br />
+	Password  :<%= password_field(:accounts, :password)%><br /><br/>
+	<p>&#160;&#160;&#160;<%= submit_tag "Submit"%></p>
+<% end %>

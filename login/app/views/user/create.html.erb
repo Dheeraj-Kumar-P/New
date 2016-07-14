@@ -1,0 +1,14 @@
+
+<% if flash[:notice] %>
+	<%= flash[:notice]%><br/>
+<% end %>
+<%= form_tag(:controller => "user",:action =>"redirect") do %>
+<h1>Signup&#160;&#160;&#160;&#160;<%= submit_tag "Log in"%>
+<% end %></h1>
+<%= form_tag(:controller => "user", :action => "new") do %> 
+	<b>Username :<%= text_field(:accounts, :user_name) %><br /><br />
+	Password &#160;:<%= password_field(:accounts, :password)%><br /><br/>
+	Phone No :<%= phone_field(:accounts, :phone)%><br /><br/>
+	Email Id &#160; :<%= email_field(:accounts, :email)%><br /><br/>
+	<p>&#160;&#160;&#160;<%= submit_tag "Create"%></p></b>
+<% end %>
