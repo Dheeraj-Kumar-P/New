@@ -1,3 +1,6 @@
+<% if flash[:notice] %>
+	<%= flash[:notice]%><br/>
+<% end %>
 <h1>Login</h1>
 <%= form_tag(:controller=>"user",:action=>"create") do %>
 <p>&#160;&#160;&#160;<%= submit_tag "Sign up" %></p>
