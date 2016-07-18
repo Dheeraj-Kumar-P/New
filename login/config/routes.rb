@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'user/create'
   post 'user/create'
   get 'user/valid'
-  root 'user#valid'
+  root 'user#valid' 
   get 'user/invalid'
   root 'user#invalid'
   get 'user/new'
