@@ -1,0 +1,16 @@
+<h1>Books</h1>
+
+<%= @books.each do |book|%>
+<tr>
+	<td>Book name:&nbsp;<%= book.book_name %>&emsp;</td>
+	<td>Book Id:&#160;<%=book.book_id %>&emsp;</td>
+	<td>Book type:&#160;<%= book.book_type %>&emsp;</td>
+	<td>Book quantity:&#160;<%= book.book_qty%>&emsp;</td>
+	<td>Book price:&#160;₹ <%= book.bookprice%>&emsp;</td>
+	<td><%= link_to 'Edit', {:controller =>'account',:action=>'edit',:id =>book.id} %>&emsp;</td>
+	<td><%= link_to 'Delete', {:controller =>'account',:action=>'delete',:id =>book.id} %></td><br><br>
+</tr>
+<% end %>
+<%= form_tag(:controller => "account",:action => "redirect") do %>
+	&emsp;<%= submit_tag "Back"%>
+<% end %>
