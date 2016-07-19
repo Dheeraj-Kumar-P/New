@@ -1,16 +1,43 @@
-<h1>Books</h1>
-
-<%= @books.each do |book|%>
-<tr>
-	<td>Book name:&nbsp;<%= book.book_name %>&emsp;</td>
-	<td>Book Id:&#160;<%=book.book_id %>&emsp;</td>
-	<td>Book type:&#160;<%= book.book_type %>&emsp;</td>
-	<td>Book quantity:&#160;<%= book.book_qty%>&emsp;</td>
-	<td>Book price:&#160;₹ <%= book.bookprice%>&emsp;</td>
-	<td><%= link_to 'Edit', {:controller =>'account',:action=>'edit',:id =>book.id} %>&emsp;</td>
-	<td><%= link_to 'Delete', {:controller =>'account',:action=>'delete',:id =>book.id} %></td><br><br>
-</tr>
-<% end %>
-<%= form_tag(:controller => "account",:action => "redirect") do %>
-	&emsp;<%= submit_tag "Back"%>
-<% end %>
+<table>
+	<th><h1>&emsp;Books</h1></th>
+	<th><%= form_tag(:controller => "account",:action => "create") do %>
+		&emsp;&emsp;&emsp;&nbsp;&nbsp;<%= submit_tag "Create Books"%>
+	<% end %></th>
+</table>
+<table>
+	<th>&emsp;&emsp;Book name&emsp;&emsp;</th>
+	<th>Book type&emsp;&emsp;</th>
+	<th>Author name&emsp;&emsp;</th>
+	<th>Book Qty&emsp;&emsp;</th>
+	<th>Book price&emsp;&emsp;</th>
+	<%= @books.each do |book|%>
+	<tr>
+		<td>&emsp;&emsp;<%= book.book_name %></td>
+		<td><%= book.book_type %></td>
+		<td><%= book.author.author_name%>&emsp;</td> 
+		<td><%= book.book_qty%>&emsp;</td>
+		<td>₹ <%= book.bookprice%>&emsp;</td>
+		<td><%= link_to 'Edit', {:controller =>'account',:action=>'edit',:id =>book.id} %>&emsp;</td>
+		<td><%= link_to 'Delete', {:controller =>'account',:action=>'delete',:id =>book.id} %></td>
+	</tr>
+		<% end %>
+</table><br><br>
+<table>
+	<th><h1>&emsp;Authors</h1></th>
+	<th><%= form_tag(:controller => "account",:action => "create_ath") do %>
+		&emsp;&emsp;<%= submit_tag "Create Author"%>
+	<% end %></th>
+</table>
+<table>
+	<th>&emsp;&emsp;Author name&emsp;&emsp;</th>
+	<th>Author Age&emsp;&emsp;</th>
+	<th>Author Description&emsp;&emsp;</th>
+	<%= @author.each do |ath|%>
+	<tr>
+		<td>&emsp;&emsp;<%= ath.author_name %></td>
+		<td><%= ath.author_age %></td>
+		<td><%= ath.author_description%>&emsp;</td>
+		<td><%= link_to 'Delete', {:controller =>'account',:action=>'delete_ath',:id =>ath.id} %></td>
+	</tr>
+		<% end %>
+</table>

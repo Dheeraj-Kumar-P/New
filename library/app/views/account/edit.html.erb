@@ -3,10 +3,13 @@
 <% end %>
 <h2>Edit</h2>
 <%= form_tag(:controller => "account", :action => "update",:id=>@books.id) do %> 
-	<b>Book name :<%= text_field(:books, :book_name,:value => @books.book_name) %><br /><br />
-	Book Id &emsp;&nbsp;:<%= text_field(:books, :book_id,:value =>@books.book_id)%><br /><br/>
-	Book Type :<%= text_field(:books, :book_type,:value =>@books.book_type)%><br /><br/>
-	Book Qty &#160; :<%= number_field(:books, :book_qty,:value =>@books.book_qty)%><br /><br/>
+	<b>Book name :&emsp;<%= text_field(:books, :book_name,:value => @books.book_name) %><br /><br />
+	Author name :&nbsp;<br>
+	<%= @author.each do |ath|%>
+	&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= radio_button(:authors, :id,ath.id) %><%=ath.author_name%><br>	
+	<%end%><br>
+	Book Type :&emsp;&nbsp;<%= text_field(:books, :book_type,:value =>@books.book_type)%><br /><br/>
+	Book Qty &#160; :&emsp;&nbsp;<%= number_field(:books, :book_qty,:value =>@books.book_qty)%><br /><br/>
 	Book Price : ₹ <%= number_field(:books, :bookprice,:value =>@books.bookprice)%><br /><br/>
 	<p>&#160;&#160;&#160;<%= submit_tag "Update"%></p></b>
 <% end %>

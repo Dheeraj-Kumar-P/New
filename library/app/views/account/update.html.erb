@@ -1,9 +1,0 @@
-<h3>Data Updated!</h3>
-	Book name:&nbsp;<%= @books.book_name%>&emsp;
-	Book Id:&#160;<%=@books.id %>&emsp;
-	Book type:&#160;<%= @books.book_type %>&emsp;
-	Book quantity:&#160;<%= @books.book_qty%>&emsp;
-	Book price:&nbsp;₹ <%= @books.bookprice %><br><br>
-<%= form_tag(:controller => "account",:action => "redirect") do %>
-	&emsp;<%= submit_tag "Back"%>
-<% end %>

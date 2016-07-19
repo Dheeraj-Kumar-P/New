@@ -1,0 +1,14 @@
+<% if flash[:notice] %>
+	<%= flash[:notice]%><br/>
+<% end %>
+<h2>Create</h2>
+<%= form_tag(:controller => "account", :action => "new_ath") do %> 
+	<b>Author name :&emsp;&nbsp;<%= text_field(:Author, :author_name) %><br /><br />
+	Author age &emsp;:&emsp;<%= number_field(:Author, :author_age)%><br /><br/>
+	Author description :<br><br>
+	&emsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= text_area(:Author, :author_description)%><br>
+	<p>&#160;&#160;&#160;<%= submit_tag "Create"%></p></b>
+<% end %>
+<%= form_tag(:controller => "account",:action => "show") do %>
+	&emsp;<%= submit_tag "Back"%>
+<% end %>
