@@ -1,0 +1,9 @@
+<h1>Order</h1><br>
+<%= form_tag(:controller=>'menu',:action=>'order',:id=>Customer.last.id) do%>
+	<%= @orders.each do |order|%>
+		<table>
+			<tr><td>&emsp;&emsp;<%= check_box_tag(order.order,order.id)%>&emsp;<%= order.order %></td></tr>
+		</table>
+	<%end%><br>
+	&emsp;&emsp;&emsp;&emsp;<%= submit_tag "Order" %>
+<%end%>

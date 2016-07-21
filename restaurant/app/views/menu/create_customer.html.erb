@@ -1,0 +1,11 @@
+<h2>&emsp;Customer Details</h2>
+<%= form_tag(:controller=>'menu',:action=>'new_customer') do%>
+	<table>
+		<tr><td>&emsp;&emsp;Name &nbsp;&nbsp;&nbsp;</td><td>: <%= text_field(:customers,:name)%></td></tr>
+		<tr><td> &emsp;&emsp;Phone &nbsp;&nbsp;&nbsp;</td><td>: <%= text_field(:customers,:phone_no)%></td></tr>
+	</table><br>
+	&emsp;&emsp;<%=submit_tag 'Order'%>
+<% end %>
+<%= form_tag(:controller=>'menu',:action=>'home') do%><br>
+	&emsp;&emsp;<%=submit_tag 'Cancel'%>
+<%end%> 

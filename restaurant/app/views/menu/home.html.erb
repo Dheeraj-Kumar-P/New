@@ -1,0 +1,29 @@
+<table>
+	<tr>
+		<th>&emsp;&emsp;</th>
+		<th><h1>Menu</h1></th>
+		<th><%= form_tag(:controller=>'menu',:action=>'show') do%>
+			&emsp;&emsp;&emsp;<%= submit_tag 'Orders'%>
+		<% end %></th>
+		<th><%= form_tag(:controller=>'menu',:action=>'create') do%>
+			&emsp;<%= submit_tag 'Add Dish'%>
+		<% end %></th>
+	</tr>
+</table>
+<%= form_tag(:controller=>'menu',:action=>'create_customer') do%>
+<table>
+	<tr>
+		<th>&emsp;&emsp;ID&emsp;&emsp;</th>
+		<th>Dish&emsp;&emsp;</th>
+		<th>Time&emsp;&emsp;</th>
+	</tr>
+	<% @orders.each do |order|%>
+		<tr>
+			<td>&emsp;&emsp;<%= order.id%></td>
+			<td><%= order.order%></td>
+			<td><%= order.time.strftime("%H:%M")%></td>
+		</tr>
+	<%end%>
+</table><br><br>
+			&emsp;&emsp;<%= submit_tag 'Place Order'%>
+<% end %> 

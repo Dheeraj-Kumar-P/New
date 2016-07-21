@@ -1,0 +1,9 @@
+<h2>&emsp;New Dish</h2><br>
+<%= form_tag(:controller=>'menu',:action=>'new') do%>
+	&emsp;&emsp;Dish Name &nbsp;: <%= text_field(:orders,:order)%><br><br>
+	&emsp;&emsp;Order Time : <%= time_field(:orders,:time)%> hh:mm<br><br>
+	&emsp;&emsp;<%=submit_tag 'Add'%>
+<% end %>
+<%= form_tag(:controller=>'menu',:action=>'home') do%><br>
+	&emsp;&emsp;<%=submit_tag 'Cancel'%>
+<%end%>

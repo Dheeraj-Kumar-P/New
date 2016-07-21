@@ -1,0 +1,11 @@
+<th><h1>&emsp;Orders</h1></th>
+<table>
+	<th>&emsp;&emsp;Customer name&emsp;&emsp;</th>
+	<th>Order&emsp;&emsp;</th>
+	<%= @customers.each do |customer|%>
+		<tr>
+			<td>&emsp;&emsp;<%= customer.name %></td>
+			<td><%= customer.order %></td>
+		</tr>
+	<% end %>
+</table>
