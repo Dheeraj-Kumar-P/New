@@ -1,0 +1,22 @@
+<h1>Dash Board</h1><br><br>
+<table>
+	<tr>
+		<th>No. of Rooms to be Cleaned </th>
+		<td>&emsp;:<%= @rooms.size%></td>
+	</tr>
+	<tr></tr><tr></tr><tr></tr>
+	<tr>
+		<th>Estimated Time </th>
+		<td>&emsp;:<%= @rooms.size%> hr</td>
+	</tr>
+	<tr></tr><tr></tr><tr></tr>
+	<tr>
+		<th>Rooms Cleaned</th>
+		<td>&emsp;:<%= @tasks.size%></td>
+	</tr>
+</table><br><br>
+&emsp;<b>Rooms:
+<% @rooms.each do |room|%>
+	&emsp;<%= link_to room.no, {:controller =>'maid',:action=>'cleaning',:id =>room.id} %><td>
+<%end%>	</b>	
+<%console%> 

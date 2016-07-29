@@ -1,0 +1,18 @@
+<h1>Cleaning Task</h1><br>
+<h1>&emsp;&emsp;<%= @room.no%> :	</h1>
+<br>
+<%if (@task.start_time.nil?)%>
+	<%= form_tag(:controller=>'maid',:action=>'start',:id=>params[:id]) do%>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%=submit_tag 'Start'%>
+	<%end%>
+<%else%>
+	<%= form_tag(:controller=>'maid',:action=>'stop',:id=>params[:id]) do%>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%=submit_tag 'Stop'%>
+	<%end%>
+<%end%>
+<h1>
+<%= form_tag(:controller=>'maid',:action=>'show',:id=>@task.user_id) do%>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= link_to "Back", {:controller =>'maid',:action=>'show',:id =>@task.user_id} %>
+<%end%>
+</h1>
+<%console%> 

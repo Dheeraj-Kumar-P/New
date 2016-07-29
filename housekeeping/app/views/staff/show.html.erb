@@ -1,0 +1,20 @@
+<table>
+	<tr><td><h1>&emsp;Staff</h1></td>
+	</tr>	
+</table>
+<%= form_tag(:controller=>'maid',:action=>'task',:id=>params[:id]) do%>
+	<table>
+		<th><b>Maids</th>
+		<%= @maids.each do |maid|%>
+			<tr><tr><td>&emsp;&emsp;<%= radio_button(:users,:id,maid.id) %>&emsp;<%=maid.name%></td></tr></tr>	
+		<%end%>
+	</table><br>
+	<table>
+		<th><b>Rooms</th>
+		<%= @rooms.each do |room|%>
+			<tr><tr><td>&emsp;&emsp;<%= check_box_tag(room.no,room.id)%>&emsp;<%= room.no %></td></tr></tr>	
+		<%end%>
+	</table><br><br>
+	&emsp;&emsp;&emsp;<%= submit_tag 'Assign'%>
+<%end%>
+<%console%> 

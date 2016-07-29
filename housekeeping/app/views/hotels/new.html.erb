@@ -1,0 +1,15 @@
+<% if flash[:notice] %>
+	<%= flash[:notice]%><br/>
+<% end %>
+<h2>Create Hotel</h2>
+<%= form_tag(:controller => "hotels", :action => "create") do %> 
+	<table>
+	<tr><td><b>Hotel name </td><td>:<%= text_field(:hotels,:name) %></tr></td>
+	<tr><td><b>No of Rooms </td><td>:<%= number_field(:hotels, :no_of_rooms)%></tr></td>
+	<tr><td><b>No of Staff </td><td>:<%= number_field(:hotels, :no_of_staff)%></tr></td>
+	<tr><td><b>No of Maid </td><td>:<%= number_field(:hotels, :no_of_maid)%></tr></td>
+	</table>
+	<p>&#160;&#160;&#160;<%= submit_tag "Create"%></p>
+<% end %>
+<%= link_to 'Back', {:controller =>'admin',:action=>'show',:id =>session[:user_id]} %>
+<%console%>

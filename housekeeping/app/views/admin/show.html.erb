@@ -1,0 +1,17 @@
+<h2>Home</h2>
+<table>
+	<tr><th>Hotels</th>
+		<td> 
+			&emsp;<%= link_to 'Create Hotel',new_hotel_path %>
+		
+		</td>
+	</tr>
+</table><br>
+<table>
+	<%= @hotels.each do |hotel|%>
+	<tr><tr>
+		<td>&emsp;<%= link_to hotel.name, {:controller =>'hotels',:action=>'show',:id =>hotel.id} %></td>
+	</tr></tr>
+	<%end%>
+</table>
+<%console%>

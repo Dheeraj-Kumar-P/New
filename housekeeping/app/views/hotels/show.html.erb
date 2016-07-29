@@ -1,0 +1,29 @@
+<table>
+	<tr>
+		<td><h1>&emsp;<%=@hotel.name%></h1><br></td>
+		<td>&emsp;&emsp;<%= form_tag(:controller => "admin",:action =>"show") do %>
+			&emsp;&emsp;&emsp;<%= submit_tag "Create User"%>
+		<% end %></td>
+	</tr>
+</table>
+<%= form_tag(:controller => "admin",:action =>"show") do %>
+	<table>
+		<tr><th>&emsp;Staffs</th></tr>
+		<%= @staffs.each do |staff|%>
+		<tr>
+			<td>&emsp;<%=staff.name%></td><td><%= check_box(staff.id,value=1)%>&emsp;Disable</td>	
+		</tr>
+		<%end%>
+	</table><br>
+	<table>
+		<tr><th>&emsp;Maids</th></tr>
+		<%= @maids.each do |maid|%>
+		<tr>
+			<td>&emsp;<%=maid.name%></td><td><%= check_box_tag(maid.id,value=1)%>&emsp;Disable</td>	
+		</tr>
+		<%end%> 
+	</table><br><br>
+	&emsp;&emsp;&emsp;<%= submit_tag "Block"%>
+<% end %><br>
+	&emsp;&emsp;&emsp;<%= link_to "Back", {:controller =>'admin',:action=>'show'} %>
+<%console%> 
