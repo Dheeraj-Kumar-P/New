@@ -14,8 +14,8 @@ class UserNotifierMailer < ApplicationMailer
 		@shift=User.where(roles_id: [2,3],shift_id: time).find_each
 		@room_cleaned=TaskAssignment.where(date: Date.today,status: "done").find_each
 		@work=TaskAssignment.where(status: "assigned").find_each
-	    @user = User.where(role_id: 1)
-	    mail( :to => @user.email,:subject => 'Shift Status' )
+	    @user = User.where(role_id: 1).find_each
+	    mail( :to => 'dheeraj@qburst.com',:subject => 'Shift Status' )
     end
 end
  

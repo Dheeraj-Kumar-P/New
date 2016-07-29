@@ -6,11 +6,12 @@ Rails.application.routes.draw do
   get 'signout', to: 'sessions#destroy', as: 'signout'
   resources :login, only: [:new, :create] do
     get 'block'
-    post 'ath'
   end
+  get 'login/ath'
   resources :hotels do
     get 'new'
   end
+  resources :users, only: [:new, :create]
   resources :admin, only: 'show'
   resources :staff, only: [:show]
   resources :maid, only: [:show] do

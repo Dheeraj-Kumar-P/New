@@ -1,9 +1,7 @@
 <table>
 	<tr>
 		<td><h1>&emsp;<%=@hotel.name%></h1><br></td>
-		<td>&emsp;&emsp;<%= form_tag(:controller => "admin",:action =>"show") do %>
-			&emsp;&emsp;&emsp;<%= submit_tag "Create User"%>
-		<% end %></td>
+		<td>&emsp;&emsp;&emsp;<%= link_to "Create User", {:controller =>'users',:action=>'new',:id=>params[:id]} %></td>
 	</tr>
 </table>
 <%= form_tag(:controller => "admin",:action =>"show") do %>
