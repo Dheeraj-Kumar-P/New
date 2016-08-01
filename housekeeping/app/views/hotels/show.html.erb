@@ -4,7 +4,7 @@
 		<td>&emsp;&emsp;&emsp;<%= link_to "Create User", {:controller =>'users',:action=>'new',:id=>params[:id]} %></td>
 	</tr>
 </table>
-<%= form_tag(:controller => "admin",:action =>"show") do %>
+<%= form_tag(:controller => "hotels",:action =>"block") do %>
 	<table>
 		<tr><th>&emsp;Staffs</th></tr>
 		<%= @staffs.each do |staff|%>
@@ -17,11 +17,10 @@
 		<tr><th>&emsp;Maids</th></tr>
 		<%= @maids.each do |maid|%>
 		<tr>
-			<td>&emsp;<%=maid.name%></td><td><%= check_box_tag(maid.id,value=1)%>&emsp;Disable</td>	
+			<td>&emsp;<%=maid.name%></td><td><%= check_box(maid.id,value=1)%>&emsp;Disable</td>	
 		</tr>
 		<%end%> 
 	</table><br><br>
-	&emsp;&emsp;&emsp;<%= submit_tag "Block"%>
+	&emsp;&emsp;&emsp;<%= submit_tag " OK "%>
 <% end %><br>
-	&emsp;&emsp;&emsp;<%= link_to "Back", {:controller =>'admin',:action=>'show'} %>
-<%console%> 
+	&emsp;&emsp;&emsp;<%= link_to "Back", {:controller =>'admin',:action=>'show',:id=>session[:user_id]} %>

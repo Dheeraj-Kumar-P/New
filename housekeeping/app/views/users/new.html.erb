@@ -4,14 +4,15 @@
 <h2>Create User</h2>
 <%= form_tag(:controller => "users", :action => "create",:id=>params[:id]) do %> 
 	<table>
-	<tr><td><b>Name </td><td>:<%= text_field(:users,:name) %></tr></td>
-	<tr><td><b>Password </td><td>:<%= password_field(:users, :password)%></tr></td>
-	<tr><td><b>Confirm Password </td><td>:<%= password_field(:password,:password)%></tr></td>
-	<tr><td><b>Email </td><td>:<%= email_field(:users, :email)%></tr></td>
-	<tr><td><b>Phone no </td><td>:<%= number_field(:users, :phone_no)%></tr></td>
+	<tr><td><b>Name </td><td>: <%= text_field(:users,:name) %></tr></td>
+	<tr><td><b>Password </td><td>: <%= password_field(:users, :password)%></tr></td>
+	<tr><td><b>Confirm Password </td><td>: <%= password_field(:password,:password)%></tr></td>
+	<tr><td><b>Email </td><td>: <%= email_field(:users, :email)%></tr></td>
+	<tr><td><b>Phone no </td><td>: <%= number_field(:users, :phone_no)%></tr></td>
 	</table><br>
-	<b>Role :<%= number_field(:users, :phone_no)%>
+	<b>Role :<%= radio_button(:users, :role_id,Role.find_by(name:"Staff").id)%>&nbsp;Staff&emsp;<%=radio_button(:users,:role_id,Role.find_by(name:"Maid").id)%>&nbsp;Maid<br>
 	<p>&#160;&#160;&#160;<%= submit_tag "Create"%></p>
 <% end %>
-<%= link_to 'Back', {:controller =>'admin',:action=>'show',:id =>session[:user_id]} %>
+&emsp;<%=link_to 'Back', {:controller =>'hotels',:action=>'show',:id =>params[:id]} %>
+&#160;&#160;&#160;<%# button_to 'Back',controller:'hotels',action:'show',id:params[:id],method:'GET' %>
 <%console%>

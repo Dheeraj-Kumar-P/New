@@ -16,7 +16,18 @@ class HotelsController < ApplicationController
 	end
 	def show
 		@hotel=Hotel.find(params[:id])
-		@staffs=User.where(:hotel_id=>params[:id],:roles_id=>2).find_each
-		@maids=User.where(:hotel_id=>params[:id],:roles_id=>3).find_each
+		@staffs=User.where(:hotel_id=>params[:id],:roles_id=>Role.find_by(name:"Staff").id).find_each
+		@maids=User.where(:hotel_id=>params[:id],:roles_id=>Role.find_by(name:"Maid").id).find_each
+	end
+	def block
+		length=params.keys.length-4
+		(2...length).each do |iteration|
+			if (params.values[iteration].values[0]=="1")
+				User.update(params.keys[iteration],:is_active=>"0")
+			else
+				User.update(params.keys[iteration],:is_active=>"1")	
+			end
+		end
+		redirect_to :controller=>'admin', :action=>'show', :id=> session[:user_id] 
 	end
 end

@@ -4,14 +4,16 @@ Rails.application.routes.draw do
   get 'auth/google_oauth2/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
-  resources :login, only: [:new, :create] do
-    get 'block'
-  end
+  resources :login, only: [:new, :create]
+  get 'login/block'
   get 'login/ath'
   resources :hotels do
-    get 'new'
+    get 'new',on: :member
+    put 'block',on: :member
   end
-  resources :users, only: [:new, :create]
+  resources :users, only: :create do
+    get 'new', on: :member
+  end
   resources :admin, only: 'show'
   resources :staff, only: [:show]
   resources :maid, only: [:show] do
@@ -19,5 +21,5 @@ Rails.application.routes.draw do
     get 'start', on: :member
     get 'stop', on: :member
     post 'task', on: :member
-  end
+  end 
 end
