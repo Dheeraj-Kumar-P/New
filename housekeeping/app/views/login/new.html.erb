@@ -5,7 +5,7 @@
 <%= form_tag(:controller => "login", :action => "create") do %> 
 	Username :<%= text_field(:users, :name) %><br /><br />
 	Password  :<%= password_field(:users, :password)%><br /><br/>
-	<p>&#160;&#160;&#160;<%= submit_tag "Submit"%></p>
+	<p>&#160;&#160;&#160;<%= submit_tag "Submit",:class => 'btn btn-large btn-danger'%></p>
 <% end %><br>
 <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
 <%console%>

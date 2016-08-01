@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160728110941) do
+ActiveRecord::Schema.define(version: 20160801121500) do
 
   create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "provider"
@@ -137,9 +137,8 @@ ActiveRecord::Schema.define(version: 20160728110941) do
     t.string   "phone_no"
     t.integer  "is_active",  limit: 1
     t.integer  "shift_id"
-    t.integer  "salary_id"
     t.integer  "hotel_id"
-    t.integer  "roles_id"
+    t.integer  "role_id"
   end
 
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"

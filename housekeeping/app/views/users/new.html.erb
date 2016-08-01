@@ -10,7 +10,7 @@
 	<tr><td><b>Email </td><td>: <%= email_field(:users, :email)%></tr></td>
 	<tr><td><b>Phone no </td><td>: <%= number_field(:users, :phone_no)%></tr></td>
 	</table><br>
-	<b>Role :<%= radio_button(:users, :role_id,Role.find_by(name:"Staff").id)%>&nbsp;Staff&emsp;<%=radio_button(:users,:role_id,Role.find_by(name:"Maid").id)%>&nbsp;Maid<br>
+	<b>Role :<%= radio_button(:roles, :id,Role.find_by(name:"Staff").id)%>&nbsp;Staff&emsp;<%=radio_button(:roles,:id,Role.find_by(name:"Maid").id)%>&nbsp;Maid<br>
 	<p>&#160;&#160;&#160;<%= submit_tag "Create"%></p>
 <% end %>
 &emsp;<%=link_to 'Back', {:controller =>'hotels',:action=>'show',:id =>params[:id]} %>

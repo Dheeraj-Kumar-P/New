@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   get 'login/block'
   get 'login/ath'
   resources :hotels do
-    get 'new',on: :member
-    put 'block',on: :member
+    get 'new', on: :member
+    post 'block', on: :member
   end
   resources :users, only: :create do
     get 'new', on: :member
@@ -21,5 +21,5 @@ Rails.application.routes.draw do
     get 'start', on: :member
     get 'stop', on: :member
     post 'task', on: :member
-  end 
+  end
 end
