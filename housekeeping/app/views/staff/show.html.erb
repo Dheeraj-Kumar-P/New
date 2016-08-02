@@ -8,13 +8,19 @@
 		<%= @maids.each do |maid|%>
 			<tr><tr><td>&emsp;&emsp;<%= radio_button(:users,:id,maid.id) %>&emsp;<%=maid.name%></td></tr></tr>	
 		<%end%>
-	</table><br>
+	</table>
+	<% if @maids.first.nil?%>
+			<br>&emsp;No maids present at this shift<br>
+	<% end %><br>
 	<table>
 		<th><b>Rooms</th>
 		<%= @rooms.each do |room|%>
 			<tr><tr><td>&emsp;&emsp;<%= check_box_tag(room.no,room.id)%>&emsp;<%= room.no %></td></tr></tr>	
 		<%end%>
-	</table><br><br>
+	</table>
+	<% if @rooms.first.nil?%>
+		<br>&emsp;All rooms are assigned<br>
+	<% end %><br><br>
 	&emsp;&emsp;&emsp;<%= submit_tag 'Assign', class: "btn btn-primary"%>
 <%end%>
-<%console%> 
+<%console%>

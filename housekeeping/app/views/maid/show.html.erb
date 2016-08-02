@@ -16,6 +16,9 @@
 	</tr>
 </table><br><br>
 &emsp;<b>Rooms:
+<% if @rooms.first.nil?%>
+	&emsp;No room assigned<br>
+<% end %>
 <% @rooms.each do |room|%>
 	&emsp;<%= link_to room.no, {:controller =>'maid',:action=>'cleaning',:id =>room.id} %><td>
 <%end%>	</b>	

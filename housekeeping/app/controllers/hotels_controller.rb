@@ -18,16 +18,17 @@ class HotelsController < ApplicationController
   end
 
   def show
-    @hotel=Hotel.find(params[:id])
-    @staffs=User.where(:hotel_id=>params[:id],:role_id=>Role.find_by(name:"Staff").id).find_each
-    @maids=User.where(:hotel_id=>params[:id],:role_id=>Role.find_by(name:"Maid").id).find_each
+    @hotel = Hotel.find(params[:id])
+    @staffs = User.where(:hotel_id=>params[:id],:role_id=>Role.find_by(name:"Staff").id).find_each
+    @maids = User.where(:hotel_id=>params[:id],:role_id=>Role.find_by(name:"Maid").id).find_each
   end
 
   def block
-    length = params.keys.length - 4
-    (2...length).each do |iteration|
-      if params.values[iteration].values[0] == '1'
-        User.update(params.keys[iteration],:is_active => '0')
+    @users=User.where(hotel_id: params[:id]).find_each
+    @users.each do |user|
+          byebug
+      if params[user.id.to_s] == '1'
+        User.update(user.id,:is_active => '0')
       else
         User.update(params.keys[iteration],:is_active => '1')
       end
