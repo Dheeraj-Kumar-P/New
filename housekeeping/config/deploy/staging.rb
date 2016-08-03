@@ -7,6 +7,8 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
+server "localhost:3000", roles: [:app, :web, :db], :primary => true
+set :deploy_to, "/var/www/my_housekeeping"
 
 
 # role-based syntax

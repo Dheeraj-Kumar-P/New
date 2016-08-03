@@ -1,17 +1,23 @@
 # config valid only for current version of Capistrano
+
 lock '3.6.0'
 
+set :scm, :git
 set :application, 'housekeeping'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :repo_url, 'https://github.com/Dheeraj-Kumar-P/New.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, '/var/www/my_app_name'
+
+set :branch, "master"
+set :deploy_via, :remote_cache
+set :stages, ["staging", "production"]
+set :default_stage, "staging"
+set :deploy_to, '/var/www/my_housekeeping'
 
 # Default value for :scm is :git
-# set :scm, :git
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
