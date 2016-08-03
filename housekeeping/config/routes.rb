@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   resources :staff, only: [:show]
   resources :maid, only: [:show] do
     get 'cleaning', on: :member
-    get 'start', on: :member
-    get 'stop', on: :member
+    post 'start', on: :member
+    post 'stop', on: :member
     post 'task', on: :member
   end
 end

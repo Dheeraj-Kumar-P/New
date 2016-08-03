@@ -1,18 +1,16 @@
 <h1>Dash Board</h1><br><br>
-<table>
+<table class="table table-bordered">
 	<tr>
-		<th>No. of Rooms to be Cleaned </th>
-		<td>&emsp;:<%= @rooms.size%></td>
+		<td><b>No. of Rooms to be Cleaned</b></td>
+		<td style='text-align:left'>:<%= @rooms.size%></td>
 	</tr>
-	<tr></tr><tr></tr><tr></tr>
 	<tr>
-		<th>Estimated Time </th>
-		<td>&emsp;:<%= @rooms.size%> hr</td>
+		<td><b>Estimated Time </b></td>
+		<td style='text-align:left'>:<%= @rooms.size%> hr</td>
 	</tr>
-	<tr></tr><tr></tr><tr></tr>
 	<tr>
-		<th>Rooms Cleaned</th>
-		<td>&emsp;:<%= @tasks.size%></td>
+		<td><b>Rooms Cleaned </b></td>
+		<td style='text-align:left'>:<%= @tasks.size%></td>
 	</tr>
 </table><br><br>
 &emsp;<b>Rooms:
@@ -20,6 +18,6 @@
 	&emsp;No room assigned<br>
 <% end %>
 <% @rooms.each do |room|%>
-	&emsp;<%= link_to room.no, {:controller =>'maid',:action=>'cleaning',:id =>room.id} %><td>
+	&emsp;<%= link_to room.no, {:controller =>'maid',:action=>'cleaning',:id =>room.id}, class: 'btn btn-primary' %><td>
 <%end%>	</b>	
 <%console%> 

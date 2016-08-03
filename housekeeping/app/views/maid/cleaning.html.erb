@@ -3,16 +3,15 @@
 <br>
 <%if (@task.start_time.nil?)%>
 	<%= form_tag(:controller=>'maid',:action=>'start',:id=>params[:id]) do%>
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%=submit_tag 'Start'%>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%=submit_tag 'Start', class: 'btn btn-success'%>
 	<%end%>
 <%else%>
 	<%= form_tag(:controller=>'maid',:action=>'stop',:id=>params[:id]) do%>
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%=submit_tag 'Stop'%>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%=submit_tag 'Stop', class: 'btn btn-danger'%>
 	<%end%>
 <%end%>
 <h1>
-<%= form_tag(:controller=>'maid',:action=>'show',:id=>@task.user_id) do%>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= link_to "Back", {:controller =>'maid',:action=>'show',:id =>@task.user_id} %>
-<%end%>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= link_to "Back", {:controller =>'maid',:action=>'show',:id =>@task.user_id} , class: 'btn btn-primary'%>
+
 </h1>
 <%console%> 

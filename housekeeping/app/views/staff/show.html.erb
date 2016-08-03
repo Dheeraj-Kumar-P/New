@@ -2,18 +2,19 @@
 	<tr><td><h1>&emsp;Staff</h1></td>
 	</tr>	
 </table>
+<th><b>&emsp;Maids</th>
 <%= form_tag(:controller=>'maid',:action=>'task',:id=>params[:id]) do%>
-	<table>
-		<th><b>Maids</th>
+	<table class="table table-bordered">
+		
 		<%= @maids.each do |maid|%>
-			<tr><tr><td>&emsp;&emsp;<%= radio_button(:users,:id,maid.id) %>&emsp;<%=maid.name%></td></tr></tr>	
+			<tr><td>&emsp;&emsp;<%= radio_button(:users,:id,maid.id) %>&emsp;<%=maid.name%></td></tr>	
 		<%end%>
 	</table>
 	<% if @maids.first.nil?%>
 			<br>&emsp;No maids present at this shift<br>
 	<% end %><br>
-	<table>
-		<th><b>Rooms</th>
+	<th><b>&emsp;Rooms</th>
+	<table class="table table-bordered">
 		<%= @rooms.each do |room|%>
 			<tr><tr><td>&emsp;&emsp;<%= check_box_tag(room.no,room.id)%>&emsp;<%= room.no %></td></tr></tr>	
 		<%end%>
@@ -23,4 +24,3 @@
 	<% end %><br><br>
 	&emsp;&emsp;&emsp;<%= submit_tag 'Assign', class: "btn btn-primary"%>
 <%end%>
-<%console%>

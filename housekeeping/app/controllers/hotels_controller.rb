@@ -13,26 +13,25 @@ class HotelsController < ApplicationController
       for iteration in 101..((params[:hotels][:no_of_rooms].to_i) + 100)
       Room.create(:no=>iteration,:hotel_id=>Hotel.last.id,:estimated_time=>"01:00:00",:status=>"clean")
     end
-      redirect_to :controller=>'admin', :action=>'show', :id=> session[:user_id] 
+      redirect_to controller: 'admin', action: 'show', id: session[:user_id]
     end
   end
 
   def show
     @hotel = Hotel.find(params[:id])
-    @staffs = User.where(:hotel_id=>params[:id],:role_id=>Role.find_by(name:"Staff").id).find_each
-    @maids = User.where(:hotel_id=>params[:id],:role_id=>Role.find_by(name:"Maid").id).find_each
+    @staffs = User.where(hotel_id: params[:id], role_id: Role.find_by(name: 'Staff').id).find_each
+    @maids = User.where(hotel_id: params[:id], role_id: Role.find_by(name: 'Maid').id).find_each
   end
 
   def block
-    @users=User.where(hotel_id: params[:id]).find_each
+    @users = User.where(hotel_id: params[:id]).find_each
     @users.each do |user|
-          byebug
-      if params[user.id.to_s] == '1'
-        User.update(user.id,:is_active => '0')
+      if params[user.id.to_s]['true'] == '1'
+        User.update(user.id, is_active: '0')
       else
-        User.update(params.keys[iteration],:is_active => '1')
+        User.update(user.id, is_active: '1')
       end
     end
-    redirect_to :controller=>'admin', :action=>'show', :id=> session[:user_id] 
+    redirect_to controller: 'admin', action: 'show', id: session[:user_id]
   end
 end

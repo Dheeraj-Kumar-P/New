@@ -1,17 +1,18 @@
-<h2>Home</h2>
-<table>
-	<tr><th>Hotels</th>
-		<td> 
-			&emsp;<%= link_to 'Create Hotel',new_hotel_path %>
-		
-		</td>
+<h2>&emsp;Home</h2>
+<p style='text-align:right'> 
+	<%= link_to 'Create Hotel', new_hotel_path, class: 'btn btn-info'%>&emsp;&emsp;
+</p>
+<table class="table" style="width:40%">
+	<tr>
+	<th style='width:15%'><th>
+	<th style='text-align:center' class='success'>Hotels</th>
+	<th style='width:15%'><th>
 	</tr>
-</table><br>
-<table>
 	<%= @hotels.each do |hotel|%>
-	<tr><tr>
-		<td>&emsp;<%= link_to hotel.name, {:controller =>'hotels',:action=>'show',:id =>hotel.id} %></td>
-	</tr></tr>
+	<tr>
+		<td style='width:15%'><td>
+		<td style='text-align:center'>&emsp;<%= link_to hotel.name, {:controller =>'hotels',:action=>'show',:id =>hotel.id},class: 'btn btn-info btn-block'%></td>
+		<td style='width:15%'><td>
+	</tr>
 	<%end%>
 </table>
-<%console%>

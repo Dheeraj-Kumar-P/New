@@ -47,3 +47,4 @@ gem 'god'
 gem 'omniauth-google-oauth2'
 gem 'rufus-scheduler'
 gem 'rubocop', '~> 0.42.0', require: false
+gem 'twitter-bootstrap-rails'
