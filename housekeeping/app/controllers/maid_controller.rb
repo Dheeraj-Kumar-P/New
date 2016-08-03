@@ -1,6 +1,6 @@
 # Maid controller
 class MaidController < ApplicationController
-  before_filter :authorize
+  before_action :authorize
   def show
     @tasks = TaskAssignment.where(user_id: params[:id], status: 'assigned').find_each
     room = []
@@ -23,7 +23,7 @@ class MaidController < ApplicationController
   end
 
   def cleaning
-    @task = TaskAssignment.find_by(room_id: params[:id])
+    @task = TaskAssignment.find_by(room_id: params[:id],status: 'assigned')
     @room = Room.find(params[:id])
   end
 

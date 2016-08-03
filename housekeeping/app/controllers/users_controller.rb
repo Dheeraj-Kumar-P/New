@@ -1,6 +1,6 @@
 # User controller
 class UsersController < ApplicationController
-  before_filter :authorize
+  before_action :authorize
 
   def new
     @shifts = Shift.find_each

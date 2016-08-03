@@ -1,6 +1,6 @@
 # StaffController
 class StaffController < ApplicationController
-  before_filter :authorize
+  before_action :authorize
 
   def show
     @staff = User.find(params[:id])

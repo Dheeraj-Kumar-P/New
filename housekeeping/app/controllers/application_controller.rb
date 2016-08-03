@@ -1,11 +1,13 @@
+# Application Controller
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
   def authorize
-  	if(session[:user_id] == nil)
+    if(session[:user_id] == nil)
   		redirect_to :controller=>'login',:action=>'new'
-  	end
+    end
   end
+
   def logged
     if(session[:user_id] != nil)
       user=User.find_by(id:session[:user_id])
@@ -20,13 +22,15 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
+
   scheduler = Rufus::Scheduler.new
   # scheduler.in '1s' do
-  #     UserNotifierMailer.shift_email.deliver_now!
-  #  end
+  #   UserNotifierMailer.shift_email.deliver_now!
+  # end
   scheduler.cron '0 00 * * 1-5' do
     scheduler.in '8h' do
       UserNotifierMailer.shift_email.deliver_now!

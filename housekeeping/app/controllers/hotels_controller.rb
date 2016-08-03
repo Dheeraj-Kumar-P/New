@@ -1,6 +1,6 @@
 # Hotels Controller
 class HotelsController < ApplicationController
-  before_filter :authorize
+  before_action :authorize
   def new
   end
 

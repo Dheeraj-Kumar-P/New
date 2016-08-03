@@ -13,10 +13,10 @@
 	<table class="table table-bordered" style='width:20%'>
 		<%= @maids.each do |maid|%>
 		<tr>
-			<td>&emsp;<%=maid.name%></td><td><%= check_box(maid.id,value='true', {checked: maid.is_active == 0})%>&emsp;Disable</td>	
+			<td>&emsp;<%=maid.name%></td><td style="text-align:center;width:50%"><%= check_box(maid.id,value='true', {checked: maid.is_active == 0})%>&emsp;Disable</td>	
 		</tr>
 		<%end%> 
 	</table><br><br>
-	&emsp;&emsp;&emsp;&nbsp;<%= submit_tag "OK",class: 'btn btn-info'%>
+	&emsp;&emsp;&emsp;<%= submit_tag "Submit",class: 'btn btn-primary btn-small'%>
 <% end %><br>
-	&emsp;&emsp;&emsp;<%= link_to "Back", {:controller =>'admin',:action=>'show',:id=>session[:user_id]},  class: 'btn btn-info'%><br><br><br><br><br><br>
+	&emsp;&emsp;&emsp;&nbsp; <%= link_to "Back", {:controller =>'admin',:action=>'show',:id=>session[:user_id]},  class: 'btn btn-info btn-small'%><br><br><br><br><br><br>

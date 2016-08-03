@@ -1,5 +1,5 @@
 class LoginController < ApplicationController 
-	before_filter :logged
+	before_action :logged
 	require 'digest/md5'
 	def new
 	end
