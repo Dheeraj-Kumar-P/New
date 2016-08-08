@@ -1,0 +1,7 @@
+print "Enter a string: "
+str=gets.chomp
+puts"String length: #{str.length}"
+puts"String reverse: #{str.reverse}"
+print"String to be concatinated:"
+c_str=gets
+puts"Concatinated string: #{str+' '+c_str}"

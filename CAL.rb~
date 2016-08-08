@@ -1,0 +1,4 @@
+No1=gets.to_i
+str=gets.chomp
+No2=gets.to_i
+puts No1,No2,str

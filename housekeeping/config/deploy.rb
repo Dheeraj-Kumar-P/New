@@ -1,11 +1,11 @@
 # config valid only for current version of Capistrano
 
 lock '3.6.0'
-
+server "qburst-desktop", roles: [:app, :web, :db], :primary => true
 set :scm, :git
 set :application, 'housekeeping'
-set :repo_url, 'https://github.com/Dheeraj-Kumar-P/New.git'
-
+set :repo_url, 'https://github.com/Dheeraj-Kumar-P/housekeeping.git'
+set :local_repository, "/home/qburst/Desktop/Dheeraj/housekeeping"
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
@@ -13,10 +13,12 @@ set :repo_url, 'https://github.com/Dheeraj-Kumar-P/New.git'
 
 set :branch, "master"
 set :deploy_via, :remote_cache
-set :stages, ["staging", "production"]
-set :default_stage, "staging"
-set :deploy_to, '/var/www/my_housekeeping'
-
+set :user, 'qburst'
+set :use_sudo, true
+set :sudo, "sudo -u qburst"
+set :stage, "development"
+set :rails_env, :development
+set :deploy_to, -> { "/home/qburst/Desktop/housekeeping" }
 # Default value for :scm is :git
 
 # Default value for :format is :airbrussh.
@@ -27,7 +29,8 @@ set :deploy_to, '/var/www/my_housekeeping'
 # set :format_options, command_output: true, log_file: 'log/capistrano.log', color: :auto, truncate: :auto
 
 # Default value for :pty is false
-# set :pty, true
+# set :pty, false
+# set :format, :pretty
 
 # Default value for :linked_files is []
 # append :linked_files, 'config/database.yml', 'config/secrets.yml'

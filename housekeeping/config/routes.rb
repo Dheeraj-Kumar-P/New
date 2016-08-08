@@ -7,16 +7,19 @@ Rails.application.routes.draw do
   resources :login, only: [:new, :create]
   get 'login/block'
   get 'login/ath'
+  get 'application/logged'
   resources :hotels do
     get 'new', on: :member
-    post 'block', on: :member
+    get 'block', on: :member
   end
-  resources :users, only: :create do
+  resources :users, only: [:create, :edit] do
     get 'new', on: :member
+    post 'update', on: :member
   end
   resources :admin, only: 'show'
   resources :staff, only: [:show]
   resources :maid, only: [:show] do
+    get 'delete', on: :member
     get 'cleaning', on: :member
     post 'start', on: :member
     post 'stop', on: :member

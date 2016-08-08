@@ -1,0 +1,28 @@
+No1,Op,No2=gets.chomp.split(" ")
+Num1=No1.to_i
+Num2=No2.to_i
+puts Num1,Num2,Op
+def plus(num1,num2)
+	return num1+num2
+end
+def sub(num1,num2)
+	return num1-num2
+end
+def mul(num1,num2)
+	return num1*num2
+end
+def div(num1,num2)
+	return num1/num2
+end
+case Op
+when Op=='+'
+	plus(Num1,Num2)
+when Op=='-'
+	sub(Num1,Num2)
+when Op=='*'
+	mul(Num1,Num2)
+when Op=='/'
+	div(Num1,Num2)
+else
+	puts"Not an Operator"		
+end

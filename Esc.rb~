@@ -1,0 +1,4 @@
+a=gets.chomp
+if a=='\e'
+	print "T"
+end

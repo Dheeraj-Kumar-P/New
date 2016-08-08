@@ -1,4 +1,5 @@
 class UserController < ApplicationController
+	require 'digest'
 	def new
 		if(params[:accounts][:user_name].empty? || params[:accounts][:password].empty? || params[:accounts][:phone].empty? || params[:accounts][:email].empty?)
 			flash[:notice] = "Enter Data!!!"

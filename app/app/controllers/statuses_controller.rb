@@ -9,7 +9,7 @@ class StatusesController < ApplicationController
 
   # GET /statuses/1
   # GET /statuses/1.json
-  def show
+  def show 
   end
 
   # GET /statuses/new
@@ -28,7 +28,7 @@ class StatusesController < ApplicationController
 
     respond_to do |format|
       if @status.save
-        format.html { redirect_to @status, notice: 'Status was successfully created.' }
+        format.html { redirect_to :action=>'index', notice: 'Status was successfully created.' }
         format.json { render :show, status: :created, location: @status }
       else
         format.html { render :new }

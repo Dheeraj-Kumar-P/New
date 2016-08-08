@@ -1,0 +1,10 @@
+hash={}
+key=[]
+key=gets.chomp
+key=key.split(' ')
+value=[]
+value=gets.chomp
+value=value.split(' ')
+print key,value
+
+

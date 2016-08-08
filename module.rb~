@@ -1,0 +1,30 @@
+module Name
+	def name(nam)
+		puts "My name is #{nam}"
+	end
+end
+module Age
+	def age(age)
+		puts "My age is #{age}"
+	end
+end
+class Details
+
+	def initialize name,age
+		@age=age
+		@name=name
+	end
+	def get_name
+		return @name
+	end
+	def get_age
+		return @age
+	end
+	
+end
+include Name
+include Age
+a=Details.new(gets.chomp,gets.chomp)
+system("clear")
+puts a.name(a.get_name)
+puts a.age(a.get_age)

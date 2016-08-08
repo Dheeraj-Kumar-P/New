@@ -1,0 +1,8 @@
+$a=[]
+def skip_animals(animals, skip) 
+    animals.each_with_index { |item, index| $a.push(item) if index>skip }
+    return $a.to_a
+end
+array=['Dheeraj','acadc','vwvw','wfcee','wvwvwe','wwefv','wevwe','wveaf','strh']
+index=3
+print skip_animals(array,index)

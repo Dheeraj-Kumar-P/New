@@ -1,0 +1,50 @@
+# Your code here
+def kel(temp,input)
+    case input
+    when 'celsius'
+        return (temp+273.15)
+    when 'fahrenheit'
+        return  ((temp + 459.67) * (5/9))
+    end
+end
+
+def cel(temp,input)
+    case input
+    when 'kelvin'
+        return (temp-273.15)
+    when 'fahrenheit'
+        return ((temp-32)*(5/9))
+    end
+end
+
+def fahr(temp,input)
+    case input
+    when 'kelvin'
+        return ((temp*(9/5))-459.67)
+    when 'celsius'
+        return ((temp*(9/5))+32 )
+    end
+end
+
+def convert_temp(temp=0, input_scale ="celsius", output_scale ="celsius")
+    if output_scale=='celsius'
+        print cel(temp,input_scale)
+    elsif output_scale=='kelvin'
+        printkel(temp,input_scale)
+    elsif output_scale=='fahrenheit'
+        printfahr(temp,input_scale) 
+    else
+        return temp
+    end
+end
+print "Enter Temp: "
+a=gets.to_i
+print "Enter input: "
+b=gets
+print "Output(Y/N): "
+c=gets
+if c=='Y'
+	print "Enter output:"	
+	c=gets
+else
+	c="celsius"
