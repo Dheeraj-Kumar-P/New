@@ -15,7 +15,7 @@ class StaffController < ApplicationController
         @time = shift.id
       end
     end
-		@maids=User.where(hotel_id: @staff.hotel_id, shift_id: @time, role_id: Role.find_by(name: 'Maid').id).find_each
+		@maids = User.where(hotel_id: @staff.hotel_id, shift_id: @time, role_id: Role.maid).find_each
     @tasks = TaskAssignment.where(status: 'assigned').find_each
     @rooms1 = Room.where(hotel_id: @staff.hotel_id).find_each
     room = []
@@ -25,6 +25,29 @@ class StaffController < ApplicationController
     @tasks.each do |task|
       room.delete(task.room_id)
     end
-    @rooms=Room.where(status: 'dirty', hotel_id: @staff.hotel_id, id: room).find_each
+    @rooms = Room.where(status: 'dirty', hotel_id: @staff.hotel_id, id: room).find_each
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    begin
+      User.update(params[:id], update_attrs(params))
+    rescue StandardError => e
+      flash[:notice] = e.message
+      redirect_to action: 'edit', id: params[:id]
+    else
+      redirect_to action: 'show', id: session[:user_id]
+    end
+  end
+
+  def update_attrs(params)
+    { name: params[:users][:name],
+      email: params[:users][:email],
+      phone_no: params[:users][:phone_no],
+      image: params[:users][:image] }
   end
 end
