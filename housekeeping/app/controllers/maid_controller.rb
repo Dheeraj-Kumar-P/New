@@ -14,18 +14,18 @@ class MaidController < ApplicationController
   end
 
   def edit
-    check
     @user = User.find(params[:id])
+    check(@user.id)
   end
 
   def update
-    check
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
+    check(@user.id)
     begin
       User.update(params[:id], update_attrs(params))
     rescue StandardError => e
       flash[:error] = e.message
-      redirect_to action: 'edit', id: params[:id]
+      redirect_to action: 'edit', id: session[:user_id]
     else
       flash[:success] = 'Successfully updated!!'
       redirect_to action: 'show', id: session[:user_id]
@@ -56,23 +56,27 @@ class MaidController < ApplicationController
   end
 
   def cleaning
-    check
     @task = TaskAssignment.find_by(room_id: params[:id], status: 'assigned')
+    check(@task.user_id)
     @room = Room.find(params[:id])
   end
 
   def start
-    check
     @task = TaskAssignment.find_by(room_id: params[:id], status: 'assigned')
+    check(@task.user_id)
     TaskAssignment.update(@task.id, start_time: Time.now)
-    flash[:success] = "Task started at #{Time.now.hour}:#{Time.now.min}"
+    min = Time.now.min
+    if min < 10
+      min = '0' + min
+    end
+    flash[:success] = "Task started at #{Time.now.hour}:#{min}"
     redirect_to controller: 'maid', action: 'show', id: @task.user_id
   end
 
   def stop
-    check
     require 'date'
     @task = TaskAssignment.find_by(room_id: params[:id], status: 'assigned')
+    check(@task.user_id)
     TaskAssignment.update(@task.id, stop_attrs)
     @salary = Salary.find_by(user_id: @task.user_id)
     @task = TaskAssignment.find(@task.id)
@@ -140,9 +144,13 @@ class MaidController < ApplicationController
       date: Date.today }
   end
 
-  def check
-    authorize! :read, Salary
-    authorize! :manage, TaskAssignment
+  def check(id)
+    if id == session[:user_id]
+      authorize! :read, Salary
+      authorize! :manage, TaskAssignment
+    else
+      authorize! :destroy, Role
+    end
   end
 
   def check_admin
