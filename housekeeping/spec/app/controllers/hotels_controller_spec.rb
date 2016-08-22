@@ -1,7 +1,6 @@
 require 'spec_helper'
 require 'rails_helper'
 describe '.create' do
-
   it 'should create a new instance given valid attributes' do
     Hotel.create(name: 'testhotel',
                  no_of_rooms: '64',
@@ -24,5 +23,12 @@ describe '.create' do
     Hotel.create(name: 'hotel',
                  no_of_rooms: '30',
                  address: '')
+  end
+end
+
+describe Hotel do
+  it 'renders the show template' do
+    get '/show'
+    expect(response).to render_template('show')
   end
 end
