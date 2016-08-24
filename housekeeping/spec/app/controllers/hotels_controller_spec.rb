@@ -26,9 +26,19 @@ describe '.create' do
   end
 end
 
-describe Hotel do
-  it 'renders the show template' do
-    get '/show'
-    expect(response).to render_template('show')
+describe HotelsController, type: :controller do
+  it 'renders new' do
+    hotel = Hotel.create(name: 'testhotel',
+                         no_of_rooms: '64',
+                         address: 'test1234')
+    path = "hotels/#{hotel.id}/new"
+    expect(get: path).to route_to('hotels#new', id: "#{hotel.id}")
+  end
+  it 'renders show' do
+    hotel = Hotel.create(name: 'testhotel',
+                         no_of_rooms: '64',
+                         address: 'test1234')
+    path = "hotels/#{hotel.id}"
+    expect(get: path).to route_to('hotels#show', id: "#{hotel.id}")
   end
 end

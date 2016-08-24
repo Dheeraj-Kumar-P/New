@@ -2,6 +2,7 @@
 class HotelsController < ApplicationController
   before_action :authorize
   before_action :check
+  include HotelHelper
   def new
     check
   end
@@ -9,8 +10,7 @@ class HotelsController < ApplicationController
   def create
     check
     begin
-      Hotel.create(create_attrs(params))
-      @hotel = Hotel.last
+      @hotel = Hotel.create(create_attrs(params))
     rescue StandardError => error
       flash_error(error, 'new')
     else
@@ -25,13 +25,14 @@ class HotelsController < ApplicationController
 
   def update
     check
-    begin
-      update_hotel(params)
-    rescue StandardError => e
-      flash_error(e, 'edit')
-    else
-      flash[:success] = 'Successfully updated!!'
-      redirect_to action: 'show', id: params[:id]
+    if params[:hotels]
+      begin
+        update_hotel(params)
+      rescue StandardError => e
+        flash_error(e, 'edit')
+      else
+        flash_msg
+      end
     end
   end
 
@@ -56,14 +57,9 @@ class HotelsController < ApplicationController
 
   private
 
-  def flash_error(error, action)
-    flash[:error] = error.message
-    redirect_to action: action
-  end
-
   def image_room_create(params)
-    Image.create(image_attr(params))
-    @hotel.update_attributes!(image_id: Image.last.id)
+    @image = Image.create(image_attr(params))
+    @hotel.update_attributes!(image_id: @image.id)
     iteration = 101..(params[:hotels][:no_of_rooms].to_i + 100)
     iteration.each do |room_no|
       Room.create(room_attrs(room_no))
@@ -74,7 +70,7 @@ class HotelsController < ApplicationController
   def image_attr(params)
     {
       image: params[:hotels][:imageable],
-      imageable_id: Hotel.last.id,
+      imageable_id: @hotel.id,
       imageable_type: 'Hotel'
     }
   end
@@ -94,7 +90,7 @@ class HotelsController < ApplicationController
 
   def room_attrs(room_no)
     { no: room_no,
-      hotel_id: Hotel.last.id,
+      hotel_id: @hotel.id,
       estimated_time: '01:00:00',
       status: 'dirty' }
   end
